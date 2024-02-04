@@ -1,27 +1,57 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { FaArrowUp } from "react-icons/fa";
-import Logo from './assets/robot.png'
+import Greeting from "./components/Greeting";
+import MessageItem from "./components/MessageItem";
 
 function App() {
   const [userMsg, setUserMsg] = useState("");
   const [messages, setMessages] = useState([]);
   const [isActive, setIsActive] = useState(false);
+  const [typingMessage, setTypingMessage] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
     setIsActive(userMsg.trim() !== "");
-    console.log(isActive);
   }, [userMsg]);
+
+  useEffect(() => {
+    if (isTyping && typingMessage.length > 0) {
+      // Set a timeout to simulate typing
+      const timeout = setTimeout(() => {
+        // Update the last message to include the next character of the typing message
+        setMessages((prevMessages) => {
+          const lastMessageIndex = prevMessages.length - 1;
+          const lastMessage = prevMessages[lastMessageIndex];
+          const updatedMessage = {
+            ...lastMessage,
+            text: lastMessage.text + typingMessage[0],
+          };
+          return [...prevMessages.slice(0, lastMessageIndex), updatedMessage];
+        });
+        // Remove the first character from the typing message
+        setTypingMessage((prev) => prev.slice(1));
+      }, 100); // Adjust typing speed here (milliseconds per character)
+      return () => clearTimeout(timeout);
+    } else if (isTyping && typingMessage.length === 0) {
+      setIsTyping(false);
+    }
+  }, [isTyping, typingMessage]);
 
   const handleUserMessage = (e) => {
     e.preventDefault();
     if (!userMsg.trim()) {
       return;
     }
-    // Add the user message to the messages state
     setMessages([...messages, { text: userMsg, sender: "user" }]);
-    // Reset the input field after sending the message
     setUserMsg("");
+    setIsTyping(true);
+
+    setTimeout(() => {
+      setTypingMessage(
+        "This is a bot response. The message appears to be typing in real-time."
+      );
+    }, 400); // Adjust delay before bot response (milliseconds)
   };
 
   return (
@@ -29,21 +59,17 @@ function App() {
       <div className="wrapper">
         <div className="message-screen">
           {messages.length === 0 ? (
-            <div className="greeting-container">
-              <img src={Logo} width={60} alt="logo"  />
-              <h1 className="greeting-txt">How can i help you today?</h1>
-            </div>
+            <Greeting />
           ) : (
             messages.map((message, index) => (
-              <div
-                key={index}
-                className={`message-container ${
-                  message.sender === "user" ? "msg-user" : "msg-bot"
-                }`}
-              >
-                <p className="message-text">{message.text}</p>
-              </div>
+              <MessageItem key={index} message={message} />
             ))
+          )}
+          {isTyping && (
+            <MessageItem
+              key="typing"
+              message={{ text: typingMessage, sender: "bot" }}
+            />
           )}
         </div>
 
