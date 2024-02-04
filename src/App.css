@@ -1,42 +1,156 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+
+.wrapper {
+  height: 800px;
+  width: 600px;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.7rem;
+  border-radius: 1rem;
+  box-shadow: inset 1px 1px 5px 1px #33333369;
+  font-family: 'Poppins', sans-serif;
+}
+.message-screen {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 600px;
+  overflow: auto;
+}
+.message-text {
+  font-size: 16px;
+  color: rgb(226, 223, 223); /* Text color */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Optional: Add a shadow to the message bubble */
+.message-container {
+  width: fit-content;
+  max-width: 70%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  background: #333;
+  position: relative;
+  padding: .5rem 1rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.msg-bot {
+  border-radius: 1rem 1rem 1rem 0rem;
+  background-color: rgb(103, 103, 103);
+  align-self: flex-start;
+}
+.msg-user {
+  background-color: rgb(69, 110, 236);
+  border-radius: 1rem 1rem 0rem 1rem;
+  align-self: flex-end;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* For WebKit-based browsers (Chrome, Safari) */
+/* You can use ::-webkit-scrollbar to target the scrollbar */
+::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar handle */
+  border-radius: 5px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar handle on hover */
 }
 
-.card {
-  padding: 2em;
+/* For Mozilla-based browsers (Firefox) */
+/* You can use scrollbar for targeting the scrollbar */
+scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+/* Track */
+scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
 }
 
-.read-the-docs {
-  color: #888;
+/* Handle */
+scrollbar-thumb {
+  border-radius: 5px;
+  background: #888; /* Color of the scrollbar handle */
+}
+
+/* Handle on hover */
+scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar handle on hover */
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 2px solid #adadade2;
+  height: 50px;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  
+}
+
+.input-container input {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  height: 100%;
+  flex: 1;
+  background-color: white;
+}
+.input-container button {
+  border-radius: 0.5rem;
+  background-color: #adadade2;
+  border: none;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #33333388;
+  width: 40px;
+  outline: none;
+  transition: all 200ms ease;
+}
+
+
+.active {
+  opacity: 1;
+  scale: 1;
+}
+.disabled{
+  opacity: .5;
+  scale: .95;
+}
+
+.input-container button:focus:not(.disabled), .input-container button:hover:not(.disabled) {
+  opacity: 1;
+  scale: 1;
+}
+
+/* Greeting */
+.greeting-container{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.greeting-container img {
+  opacity: .6;
+}
+.greeting-container .greeting-txt{
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #565656;
 }
