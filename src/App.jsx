@@ -3,55 +3,45 @@ import "./App.css";
 import { FaArrowUp } from "react-icons/fa";
 import Greeting from "./components/Greeting";
 import MessageItem from "./components/MessageItem";
+import WaitingPrompt from "./components/WaitingPrompt";
 
 function App() {
   const [userMsg, setUserMsg] = useState("");
   const [messages, setMessages] = useState([]);
   const [isActive, setIsActive] = useState(false);
-  const [typingMessage, setTypingMessage] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsActive(userMsg.trim() !== "");
   }, [userMsg]);
-
   useEffect(() => {
-    if (isTyping && typingMessage.length > 0) {
-      // Set a timeout to simulate typing
-      const timeout = setTimeout(() => {
-        // Update the last message to include the next character of the typing message
-        setMessages((prevMessages) => {
-          const lastMessageIndex = prevMessages.length - 1;
-          const lastMessage = prevMessages[lastMessageIndex];
-          const updatedMessage = {
-            ...lastMessage,
-            text: lastMessage.text + typingMessage[0],
-          };
-          return [...prevMessages.slice(0, lastMessageIndex), updatedMessage];
-        });
-        // Remove the first character from the typing message
-        setTypingMessage((prev) => prev.slice(1));
-      }, 100); // Adjust typing speed here (milliseconds per character)
-      return () => clearTimeout(timeout);
-    } else if (isTyping && typingMessage.length === 0) {
-      setIsTyping(false);
-    }
-  }, [isTyping, typingMessage]);
+    console.log("Is loading: ", isLoading);
+  }, [isLoading]);
 
   const handleUserMessage = (e) => {
     e.preventDefault();
     if (!userMsg.trim()) {
       return;
     }
-    setMessages([...messages, { text: userMsg, sender: "user" }]);
+
+    // Add the user message to the messages state
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { text: userMsg, sender: "user" },
+    ]);
+    // Reset the input field after sending the message
     setUserMsg("");
-    setIsTyping(true);
+    setIsLoading(true);
+
+    const botResponse = "Hei Jonas! Hva kan jeg hjelpe deg med i dag?";
 
     setTimeout(() => {
-      setTypingMessage(
-        "This is a bot response. The message appears to be typing in real-time."
-      );
-    }, 400); // Adjust delay before bot response (milliseconds)
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: botResponse, sender: "bot" },
+      ]);
+      setIsLoading(false);
+    }, 3000);
   };
 
   return (
@@ -65,12 +55,7 @@ function App() {
               <MessageItem key={index} message={message} />
             ))
           )}
-          {isTyping && (
-            <MessageItem
-              key="typing"
-              message={{ text: typingMessage, sender: "bot" }}
-            />
-          )}
+          {isLoading && <WaitingPrompt />}
         </div>
 
         <form onSubmit={handleUserMessage} className="input-container">
