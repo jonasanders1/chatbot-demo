@@ -28,7 +28,7 @@ const Chatbot = () => {
     // spilt response to characters
     const characters = botResponse.split("");
     let botMessage = "";
-
+    
     const addCharacter = (index) => {
       if (index < characters.length) {
         // delete prev message
@@ -43,7 +43,7 @@ const Chatbot = () => {
           ...prevMessages,
           { text: botMessage, sender: "bot" },
         ]);
-        setTimeout(() => addCharacter(index + 1), 20);
+        setTimeout(() => addCharacter(index + 1), 200);
       } else {
         setIsLoading(false);
         setIsUsersTurn(true);
