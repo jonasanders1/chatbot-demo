@@ -11,8 +11,19 @@
   border-radius: 1rem;
   box-shadow: inset 1px 1px 5px 1px #33333369;
   font-family: 'Poppins', sans-serif;
-  
+  position: relative;
 }
+
+.wrapper::after{
+  content: '';
+  position: absolute;
+  width: calc(100% - 2rem);
+  height: 20px;
+  top: 16px;
+  left: 1rem;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgb(255, 255, 255, 0.0));
+}
+
 .message-screen {
   flex: 1;
   display: flex;
@@ -21,7 +32,9 @@
   max-height: 600px;
   overflow: auto;
   padding: 1.5rem .5rem 1.5rem 0rem;
+  
 }
+
 .message-text {
   font-size: 16px;
   color: rgb(255, 255, 255); /* Text color */
@@ -63,6 +76,7 @@
 /* You can use ::-webkit-scrollbar to target the scrollbar */
 ::-webkit-scrollbar {
   width: 5px; /* Width of the scrollbar */
+  
 }
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -173,7 +187,6 @@ scrollbar-thumb:hover {
 .loading-container{
   margin: 0%;
   padding: 0%;
-  
   height: fit-content;
   width: fit-content;
   transform: translate(-28%, -20%);
