@@ -33,12 +33,23 @@ const Input = ({
     adjustTextareaHeight();
   };
 
-  // Function to adjust the textarea height based on its content
+  // Function to adjust the hight of the input field
   const adjustTextareaHeight = () => {
     const textarea = textareaRef.current;
     if (textarea) {
-      textarea.style.height = "auto"; // Reset the height to auto to recalculate the scroll height
-      textarea.style.height = textarea.scrollHeight + "px"; // Set the height to match the scroll height
+      textarea.style.height = "auto";
+      textarea.style.height = textarea.scrollHeight + "px";
+    }
+  };
+
+  // Enter --> submit the form
+  // Enter + shift --> new line
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleUserMessage(e);
+    } else if (e.key === "Enter" && e.shiftKey) {
+      // (new line)
     }
   };
 
@@ -48,6 +59,7 @@ const Input = ({
         ref={textareaRef}
         className="input-container"
         type="text"
+        onKeyDown={handleKeyDown}
         placeholder="Ask me anything..."
         value={userInput}
         onChange={(e) => {

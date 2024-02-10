@@ -21,36 +21,48 @@ const Chatbot = () => {
     }
   }, [isUsersTurn]);
 
+  // const handleBotAnswer = () => {
+  //   setIsLoading(true);
+
+  //   const botResponse = "Hei Jonas! Hva kan jeg hjelpe deg med i dag?";
+  //   // spilt response to characters
+  //   const characters = botResponse.split("");
+  //   let botMessage = "";
+
+  //   const addCharacter = (index) => {
+  //     if (index < characters.length) {
+  //       // delete prev message
+  //       if (index > 0) {
+  //         setMessages((prevMessages) => prevMessages.slice(0, -1));
+  //       }
+  //       // Concatenate the character to the botMessage
+  //       botMessage += characters[index];
+
+  //       // Set the messages state with the current bot message
+  //       setMessages((prevMessages) => [
+  //         ...prevMessages,
+  //         { text: botMessage, sender: "bot" },
+  //       ]);
+  //       setTimeout(() => addCharacter(index + 1), 200);
+  //     } else {
+  //       setIsLoading(false);
+  //       setIsUsersTurn(true);
+  //     }
+  //   };
+  //   // function call with 0 as initial index
+  //   addCharacter(0);
+  // };
+
   const handleBotAnswer = () => {
     setIsLoading(true);
-
     const botResponse = "Hei Jonas! Hva kan jeg hjelpe deg med i dag?";
-    // spilt response to characters
-    const characters = botResponse.split("");
-    let botMessage = "";
-    
-    const addCharacter = (index) => {
-      if (index < characters.length) {
-        // delete prev message
-        if (index > 0) {
-          setMessages((prevMessages) => prevMessages.slice(0, -1));
-        }
-        // Concatenate the character to the botMessage
-        botMessage += characters[index];
 
-        // Set the messages state with the current bot message
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { text: botMessage, sender: "bot" },
-        ]);
-        setTimeout(() => addCharacter(index + 1), 200);
-      } else {
-        setIsLoading(false);
-        setIsUsersTurn(true);
-      }
-    };
-    // function call with 0 as initial index
-    addCharacter(0);
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { text: botResponse, sender: "bot" },
+    ]);
+    setIsLoading(false);
+    setIsUsersTurn(true);
   };
 
   return (
