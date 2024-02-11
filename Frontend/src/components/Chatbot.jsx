@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import Greeting from "./Greeting";
 import MessageList from "./MessageList";
@@ -10,6 +11,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [isActive, setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isTextareaDisabled, setIsTextareaDisabled] = useState(false);
 
   useEffect(() => {
     setIsActive(userInput.trim() !== "");
@@ -21,48 +23,27 @@ const Chatbot = () => {
     }
   }, [isUsersTurn]);
 
-  // const handleBotAnswer = () => {
-  //   setIsLoading(true);
-
-  //   const botResponse = "Hei Jonas! Hva kan jeg hjelpe deg med i dag?";
-  //   // spilt response to characters
-  //   const characters = botResponse.split("");
-  //   let botMessage = "";
-
-  //   const addCharacter = (index) => {
-  //     if (index < characters.length) {
-  //       // delete prev message
-  //       if (index > 0) {
-  //         setMessages((prevMessages) => prevMessages.slice(0, -1));
-  //       }
-  //       // Concatenate the character to the botMessage
-  //       botMessage += characters[index];
-
-  //       // Set the messages state with the current bot message
-  //       setMessages((prevMessages) => [
-  //         ...prevMessages,
-  //         { text: botMessage, sender: "bot" },
-  //       ]);
-  //       setTimeout(() => addCharacter(index + 1), 200);
-  //     } else {
-  //       setIsLoading(false);
-  //       setIsUsersTurn(true);
-  //     }
-  //   };
-  //   // function call with 0 as initial index
-  //   addCharacter(0);
-  // };
-
   const handleBotAnswer = () => {
     setIsLoading(true);
-    const botResponse = "Hei Jonas! Hva kan jeg hjelpe deg med i dag?";
 
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { text: botResponse, sender: "bot" },
-    ]);
-    setIsLoading(false);
-    setIsUsersTurn(true);
+    fetch("http://127.0.0.1:5000/bot/messages")
+      .then((response) => response.json())
+      .then((data) => {
+        const botResponse = data[0].text;
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { text: botResponse, sender: "bot" },
+        ]);
+        console.log(data[0].text)
+      })
+      .catch((error) => {
+        console.error("Error fetching messages:", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+        setIsUsersTurn(true);
+        setIsTextareaDisabled(false);
+      });
   };
 
   return (

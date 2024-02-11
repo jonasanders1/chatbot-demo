@@ -2,14 +2,13 @@ import "./App.css";
 // import MyComponent from "./components/MyComponent";
 
 import Chatbot from "./components/Chatbot";
+import Header from "./components/Header";
 
 function App() {
   return (
-    // <MyComponent />
-
     <div className="container">
-      <Chatbot/>
-
+      <Header/>
+      <Chatbot />
     </div>
   );
 }

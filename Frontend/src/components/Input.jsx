@@ -9,6 +9,7 @@ const Input = ({
   setMessages,
   isLoading,
   setIsUsersTurn,
+  isTextareaDisabled,
 }) => {
   const textareaRef = useRef(null);
 
@@ -67,6 +68,7 @@ const Input = ({
           adjustTextareaHeight();
           console.log(textareaRef.current.scrollHeight);
         }}
+        disabled={isLoading || isTextareaDisabled} // Disable textarea based on state
       />
       <button type="submit" className={isActive ? "active" : "disabled"}>
         <FaArrowUp size={20} color="white" />
