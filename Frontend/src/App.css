@@ -38,8 +38,28 @@
 
 .message-text {
   font-size: 16px;
-  color: rgb(255, 255, 255); /* Text color */
+  color: rgb(255, 255, 255);
 }
+
+.container{
+  display: flex; 
+  gap: 20px;
+}
+.header-wrapper{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+.bot-wrapper{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 2;
+}
+
 
 /* Optional: Add a shadow to the message bubble */
 .message-container {
@@ -115,7 +135,7 @@ scrollbar-thumb {
 scrollbar-thumb:hover {
   background: #555; /* Color of the scrollbar handle on hover */
 }
-form {
+.input-form {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -134,7 +154,7 @@ form {
   flex: 1;
 }
 
-button {
+.input-button {
   border-radius: 0.5rem;
   border: none;
   height: 40px;

@@ -7,8 +7,12 @@ import Header from "./components/Header";
 function App() {
   return (
     <div className="container">
-      <Header/>
-      <Chatbot />
+      <div className="header-wrapper">
+        <Header />
+      </div>
+      <div className="bot-wrapper">
+        <Chatbot />
+      </div>
     </div>
   );
 }

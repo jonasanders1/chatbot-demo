@@ -55,7 +55,7 @@ const Input = ({
   };
 
   return (
-    <form onSubmit={handleUserMessage}>
+    <form onSubmit={handleUserMessage} className="input-form">
       <textarea
         ref={textareaRef}
         className="input-container"
@@ -68,9 +68,12 @@ const Input = ({
           adjustTextareaHeight();
           console.log(textareaRef.current.scrollHeight);
         }}
-        disabled={isLoading || isTextareaDisabled} // Disable textarea based on state
+        disabled={isLoading || isTextareaDisabled} 
       />
-      <button type="submit" className={isActive ? "active" : "disabled"}>
+      <button
+        type="submit"
+        className={isActive ? "active input-button" : "disabled input-button"}
+      >
         <FaArrowUp size={20} color="white" />
       </button>
     </form>
