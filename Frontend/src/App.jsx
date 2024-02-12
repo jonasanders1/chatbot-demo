@@ -1,20 +1,38 @@
-import "./App.css";
-// import MyComponent from "./components/MyComponent";
+// /* eslint-disable no-unused-vars */
+// import "./App.css";
+// // App.js
+// import React from 'react';
+// import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+// import ConfigureBot from '../src/pages/ConfigureBot'
+// import ChatbotPage from '../src/pages/ChatbotPage'
 
-import Chatbot from "./components/Chatbot";
-import Header from "./components/Header";
+// function App() {
+//   return (
+//       <Router>
+//         <div>
+//           <nav>
+//             <ul>
+//               <li>
+//                 <Link to="/">Home</Link>
+//               </li>
+//               <li>
+//                 <Link to="/about">About</Link>
+//               </li>
+//             </ul>
+//           </nav>
 
-function App() {
-  return (
-    <div className="container">
-      <div className="header-wrapper">
-        <Header />
-      </div>
-      <div className="bot-wrapper">
-        <Chatbot />
-      </div>
-    </div>
-  );
-}
+//           <Switch>
+//             <Route path="/about">
+//               <ConfigureBot/>
+//             </Route>
+//             <Route path="/">
+//               <ChatbotPage />
+//             </Route>
+//           </Switch>
+//         </div>
+//       </Router>
+//   );
+// }
 
-export default App;
+// export default App;
+

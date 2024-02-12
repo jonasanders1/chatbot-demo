@@ -1,0 +1,38 @@
+.message-container {
+  width: 100%;
+  font-weight: 300;
+  /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); */
+  background: inherit;
+  position: relative;
+  padding: 0.5rem 1rem;
+  scale: 0;
+  animation: scale 200ms ease-in 200ms forwards;
+  word-wrap: break-word;
+}
+.message-header{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+}
+.message-header-text{
+  font-weight: 300;
+}
+.message-text {
+  color: white;
+  font-size: 16px;
+}
+
+@keyframes scale {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}

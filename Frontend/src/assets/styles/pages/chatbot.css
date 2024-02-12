@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 300px;
+  height: 100vh;
+  padding: 1rem;
+}
+.chatbot-container {
+  flex: 1;
+  height: 100vh;
+  padding: 1rem;
+  overflow: hidden;
+}
+.sidebar-header {
+}
+
+.go-back-btn {
+  background-color: inherit;
+  border-radius: 0.2rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 150ms ease;
+}
+.go-back-btn:hover {
+  opacity: 1;
+}
+.go-back-btn-text {
+  font-size: 1.2rem;
+}
+
+.chatbot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: inset 1px 1px 5px 1px #4d4d4d69;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  overflow: hidden;
+
+}
+
+/* .chatbot::after {
+  content: "";
+  position: absolute;
+  width: calc(100% - 2rem);
+  height: 20px;
+  top: 16px;
+  left: 1rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1),
+    rgb(255, 255, 255, 0)
+  );
+} */
+
+.message-screen {
+  /* border: 1px solid red; */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: auto;
+  /* padding: 1.5rem 0.5rem 1.5rem 0rem; */
+}

@@ -1,99 +1,3 @@
-.wrapper {
-  height: 800px;
-  width: 600px;
-  max-height: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
-  border-radius: 1rem;
-  box-shadow: inset 1px 1px 5px 1px #33333369;
-  font-family: "Poppins", sans-serif;
-  position: relative;
-}
-
-.wrapper::after {
-  content: "";
-  position: absolute;
-  width: calc(100% - 2rem);
-  height: 20px;
-  top: 16px;
-  left: 1rem;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 1),
-    rgb(255, 255, 255, 0)
-  );
-}
-
-.message-screen {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  max-height: 600px;
-  overflow: auto;
-  padding: 1.5rem 0.5rem 1.5rem 0rem;
-}
-
-.message-text {
-  font-size: 16px;
-  color: rgb(255, 255, 255);
-}
-
-.container{
-  display: flex; 
-  gap: 20px;
-}
-.header-wrapper{
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
-.bot-wrapper{
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 2;
-}
-
-
-/* Optional: Add a shadow to the message bubble */
-.message-container {
-  width: fit-content;
-  font-weight: 300;
-  max-width: 70%;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  background: #333;
-  position: relative;
-  padding: 0.5rem 1rem;
-  scale: 0;
-  animation: scale 200ms ease-in 200ms forwards;
-}
-
-.msg-bot {
-  border-radius: 1rem 1rem 1rem 0rem;
-  background-color: rgb(103, 103, 103);
-  align-self: flex-start;
-}
-
-.msg-user {
-  background-color: rgb(69, 110, 236);
-  border-radius: 1rem 1rem 0rem 1rem;
-  align-self: flex-end;
-  word-wrap: break-word;
-}
-@keyframes scale {
-  from {
-    scale: 0;
-  }
-  to {
-    scale: 1;
-  }
-}
 
 /* For WebKit-based browsers (Chrome, Safari) */
 /* You can use ::-webkit-scrollbar to target the scrollbar */
@@ -101,12 +5,12 @@
   width: 5px; /* Width of the scrollbar */
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #888; /* Color of the scrollbar handle */
   border-radius: 5px;
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; /* Color of the scrollbar handle */
+  background: #f1f1f1;
   border-radius: 5px;
 }
 /* Handle on hover */
@@ -135,54 +39,7 @@ scrollbar-thumb {
 scrollbar-thumb:hover {
   background: #555; /* Color of the scrollbar handle on hover */
 }
-.input-form {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 1rem;
-  border: 2px solid #adadade2;
-  border-radius: 1rem;
-  padding: 0.5rem;
-}
-.input-container {
-  font-size: 16px;
-  outline: none;
-  border: none;
-  background-color: inherit;
-  max-height: 200px;
-  resize: none;
-  flex: 1;
-}
 
-.input-button {
-  border-radius: 0.5rem;
-  border: none;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  outline: none;
-  transition: all 200ms ease;
-}
-
-.active {
-  opacity: 1;
-  background-color: rgb(69, 110, 236);
-  scale: 1;
-}
-.disabled {
-  opacity: 0.5;
-  background-color: #33333388;
-  scale: 0.95;
-}
-
-.input-container button:focus:not(.disabled),
-.input-container button:hover:not(.disabled) {
-  opacity: 1;
-
-  scale: 1;
-}
 
 /* Greeting */
 .greeting-container {

@@ -1,0 +1,47 @@
+.input-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  border: 2px solid #BFBFBF;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.input-container {
+  font-size: 16px;
+  outline: none;
+  border: none;
+  background-color: inherit;
+  max-height: 200px;
+  resize: none;
+  flex: 1;
+  color: #BFBFBF;
+}
+
+.input-button {
+  border-radius: 0.5rem;
+  border: none;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  outline: none;
+  transition: all 200ms ease;
+}
+
+.active {
+  opacity: 1;
+  background-color: rgb(69, 110, 236);
+  scale: 1;
+}
+.disabled {
+  background-color: #ffffffa1;
+  scale: 0.95;
+}
+
+.input-container button:focus:not(.disabled),
+.input-container button:hover:not(.disabled) {
+  opacity: 1;
+  scale: 1;
+}

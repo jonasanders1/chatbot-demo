@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useRef } from "react";
 import { FaArrowUp } from "react-icons/fa";
+import '../assets/styles/components/input.css'
+import { colors } from "../assets/styles/colors";
+
 
 const Input = ({
   userInput,
@@ -13,7 +16,7 @@ const Input = ({
 }) => {
   const textareaRef = useRef(null);
 
-  const handleUserMessage = (e) => {
+  const handleUserMessage = async (e) => {
     e.preventDefault();
     if (!userInput.trim()) {
       return;
@@ -21,6 +24,20 @@ const Input = ({
     if (isLoading) {
       return;
     }
+    // POST userInput to backend
+    // try {
+    //   const response = await fetch("http://localhost:5000/message", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ message: userInput }),
+    //   });
+    //   const responseData = await response.json();
+    //   console.log(responseData);
+    // } catch (error) {
+    //   console.error("Error:", error);
+    // }
 
     // Add the user message to the messages state
     setMessages((prevMessages) => [
@@ -68,8 +85,9 @@ const Input = ({
           adjustTextareaHeight();
           console.log(textareaRef.current.scrollHeight);
         }}
-        disabled={isLoading || isTextareaDisabled} 
+        disabled={isLoading || isTextareaDisabled}
       />
+
       <button
         type="submit"
         className={isActive ? "active input-button" : "disabled input-button"}
