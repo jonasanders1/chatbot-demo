@@ -7,6 +7,7 @@ import Input from "../components/Input";
 import { Link } from "react-router-dom";
 import "../assets/styles/pages/chatbot.css";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
+import { CiMenuBurger } from "react-icons/ci";
 import { colors } from "../assets/styles/colors";
 
 const Page = () => {
@@ -19,6 +20,7 @@ const Page = () => {
   const [companyUrl, setCompanyUrl] = useState("");
   const [companyName, setCompanyName] = useState("");
   const chatContainerRef = useRef(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   // Hook to scroll down when new messages is added
   useEffect(() => {
@@ -38,28 +40,35 @@ const Page = () => {
     }
   }, [isUsersTurn]);
 
+  const handleSidebarMenu = () => {
+    console.log(isSidebarOpen);
+    setIsSidebarOpen((prev) => !prev);
+  };
+
   // function only for testing (API call handles this logic)
   const handleBotAnswer = async () => {
     setIsLoading(true);
 
-    fetch("http://127.0.0.1:5000/bot/messages")
-      .then((response) => response.json())
-      .then((data) => {
-        const botResponse = data[0].text;
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { text: botResponse, sender: "bot" },
-        ]);
-        console.log(data[0].text);
-      })
-      .catch((error) => {
-        console.error("Error fetching messages:", error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-        setIsUsersTurn(true);
-        setIsTextareaDisabled(false);
-      });
+    setTimeout(() => {
+      fetch("http://127.0.0.1:5000/bot/messages")
+        .then((response) => response.json())
+        .then((data) => {
+          const botResponse = data[0].text;
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            { text: botResponse, sender: "bot" },
+          ]);
+          console.log(data[0].text);
+        })
+        .catch((error) => {
+          console.error("Error fetching messages:", error);
+        })
+        .finally(() => {
+          setIsLoading(false);
+          setIsUsersTurn(true);
+          setIsTextareaDisabled(false);
+        });
+    }, 1000);
   };
 
   return (
@@ -67,8 +76,13 @@ const Page = () => {
       className="container"
       style={{ backgroundColor: colors.backgroundColor }}
     >
+      {!isSidebarOpen && (
+        <button className="open-sidebar-menu" onClick={handleSidebarMenu}>
+          <CiMenuBurger color={colors.sidebarBackGroundColor} size={25} />
+        </button>
+      )}
       <div
-        className="sidebar"
+        className={`sidebar ${!isSidebarOpen ? "hidden" : ""}`}
         style={{ backgroundColor: colors.sidebarBackGroundColor }}
       >
         <div className="sidebar-header">
@@ -86,6 +100,12 @@ const Page = () => {
               </span>
             </button>
           </Link>
+          <button
+            className="close-sidebar-menu sidebar-button"
+            onClick={handleSidebarMenu}
+          >
+            <CiMenuBurger color={colors.backgroundColor} size={25} />
+          </button>
         </div>
       </div>
 

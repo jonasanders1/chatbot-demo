@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
 import { ReactTyped } from "react-typed";
 import { useState } from "react";
 import "../assets/styles/components/messageItem.css";
 import { colors } from "../assets/styles/colors";
-/* eslint-disable react/prop-types */
 const MessageItem = ({ message }) => {
   const [animationComplete, setAnimationComplete] = useState(false);
 
