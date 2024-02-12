@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Greeting from "../components/Greeting";
 import MessageList from "../components/MessageList";
 import WaitingPrompt from "../components/WaitingPrompt";
@@ -15,9 +15,18 @@ const Page = () => {
   const [messages, setMessages] = useState([]);
   const [isActive, setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [setIsTextareaDisabled] = useState(false);
+  const [isTextareaDisabled, setIsTextareaDisabled] = useState(false);
   const [companyUrl, setCompanyUrl] = useState("");
   const [companyName, setCompanyName] = useState("");
+  const chatContainerRef = useRef(null);
+
+  // Hook to scroll down when new messages is added
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   useEffect(() => {
     setIsActive(userInput.trim() !== "");
@@ -54,13 +63,27 @@ const Page = () => {
   };
 
   return (
-    <div className="container" style={{ backgroundColor: colors.backgroundColor}}>
-      <div className="sidebar" style={{backgroundColor: colors.sidebarBackGroundColor}}>
+    <div
+      className="container"
+      style={{ backgroundColor: colors.backgroundColor }}
+    >
+      <div
+        className="sidebar"
+        style={{ backgroundColor: colors.sidebarBackGroundColor }}
+      >
         <div className="sidebar-header">
           <Link to={"/"} style={{ textDecoration: "none" }}>
             <button className="go-back-btn">
-              <IoArrowBackCircleSharp size={30} color={colors.textColor} />
-              <span className="go-back-btn-text" style={{color: colors.textColor}}>Configure</span>
+              <IoArrowBackCircleSharp
+                size={30}
+                color={colors.sidebarSecondaryColor}
+              />
+              <span
+                className="go-back-btn-text"
+                style={{ color: colors.sidebarSecondaryColor }}
+              >
+                Configure
+              </span>
             </button>
           </Link>
         </div>
@@ -68,7 +91,7 @@ const Page = () => {
 
       <div className="chatbot-container">
         <div className="chatbot">
-          <div className="message-screen">
+          <div className="message-screen" ref={chatContainerRef}>
             {messages.length === 0 ? (
               <Greeting />
             ) : (

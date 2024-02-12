@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useRef } from "react";
 import { FaArrowUp } from "react-icons/fa";
-import '../assets/styles/components/input.css'
-import { colors } from "../assets/styles/colors";
-
+import "../assets/styles/components/input.css";
 
 const Input = ({
   userInput,

@@ -48,6 +48,7 @@ const MessageItem = ({ message }) => {
 
       {message.sender === "bot" && !animationComplete ? (
         <ReactTyped
+          style={{ color: colors.chatTextColor }}
           className="message-text"
           strings={[message.text]}
           typeSpeed={30}
@@ -57,7 +58,9 @@ const MessageItem = ({ message }) => {
         />
       ) : (
         <div>
-          <p className="message-text">{message.text}</p>
+          <p className="message-text" style={{ color: colors.chatTextColor }}>
+            {message.text}
+          </p>
         </div>
       )}
     </div>

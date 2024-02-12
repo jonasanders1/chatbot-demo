@@ -10,7 +10,7 @@
 .chatbot-container {
   flex: 1;
   height: 100vh;
-  padding: 1rem;
+  padding: 0.5rem;
   overflow: hidden;
 }
 .sidebar-header {
@@ -43,12 +43,11 @@
   width: 100%;
   max-width: 100%;
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 0.3rem;
   box-shadow: inset 1px 1px 5px 1px #4d4d4d69;
   font-family: "Poppins", sans-serif;
   position: relative;
   overflow: hidden;
-
 }
 
 /* .chatbot::after {
@@ -62,8 +61,8 @@
     to bottom,
     rgba(255, 255, 255, 1),
     rgb(255, 255, 255, 0)
-  );
-} */
+    );
+  } */
 
 .message-screen {
   /* border: 1px solid red; */
@@ -72,5 +71,12 @@
   flex-direction: column;
   gap: 0.5rem;
   overflow: auto;
-  /* padding: 1.5rem 0.5rem 1.5rem 0rem; */
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+.scroll-down-button {
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
 }

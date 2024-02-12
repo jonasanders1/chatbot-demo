@@ -1,16 +1,15 @@
-
 /* For WebKit-based browsers (Chrome, Safari) */
 /* You can use ::-webkit-scrollbar to target the scrollbar */
 ::-webkit-scrollbar {
   width: 5px; /* Width of the scrollbar */
 }
 ::-webkit-scrollbar-track {
-  background: #888; /* Color of the scrollbar handle */
+  background: #cecdc1;
   border-radius: 5px;
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #f1f1f1;
+  background: #4a4849; /* Color of the scrollbar handle */
   border-radius: 5px;
 }
 /* Handle on hover */
@@ -39,7 +38,6 @@ scrollbar-thumb {
 scrollbar-thumb:hover {
   background: #555; /* Color of the scrollbar handle on hover */
 }
-
 
 /* Greeting */
 .greeting-container {
