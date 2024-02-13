@@ -6,6 +6,12 @@ import "../assets/styles/pages/configure.css";
 const Page = () => {
   const [companyUrl, setCompanyUrl] = useState("");
   const [companyName, setCompanyName] = useState("");
+  const [selectedTheme, setSelectedTheme] = useState("light");
+
+  const handleThemeSelect = (e, theme) => {
+    e.preventDefault();
+    setSelectedTheme(theme);
+  };
 
   const handleCompanyInfo = async (e) => {
     // e.preventDefault();
@@ -62,6 +68,27 @@ const Page = () => {
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
           />
+        </div>
+        <div className="theme-field">
+          <label>Theme</label>
+          <div className="button-container">
+            <button
+              className={`theme-btn theme-btn-light ${
+                selectedTheme === "light" ? "active" : ""
+              }`}
+              onClick={(e) => handleThemeSelect(e, "light")}
+            >
+              <span className="theme-txt theme-txt-light">Light theme</span>
+            </button>
+            <button
+              className={`theme-btn theme-btn-dark ${
+                selectedTheme === "dark" ? "active" : ""
+              }`}
+              onClick={(e) => handleThemeSelect(e, "dark")}
+            >
+              <span className="theme-txt theme-txt-dark">Dark theme</span>
+            </button>
+          </div>
         </div>
 
         {/* <button className="configure-btn" type="submit">
