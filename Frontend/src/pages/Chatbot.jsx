@@ -9,6 +9,7 @@ import "../assets/styles/pages/chatbot.css";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { CiMenuBurger } from "react-icons/ci";
 import { colors } from "../assets/styles/colors";
+import { HiMenu } from "react-icons/hi";
 
 const Page = () => {
   const [userInput, setUserInput] = useState("");
@@ -77,8 +78,8 @@ const Page = () => {
       style={{ backgroundColor: colors.backgroundColor }}
     >
       {!isSidebarOpen && (
-        <button className="open-sidebar-menu" onClick={handleSidebarMenu}>
-          <CiMenuBurger color={colors.sidebarBackGroundColor} size={25} />
+        <button className="open-sidebar-menu sidebar-button" onClick={handleSidebarMenu}>
+          <HiMenu color={colors.sidebarBackGroundColor} size={25} />
         </button>
       )}
       <div
@@ -104,7 +105,7 @@ const Page = () => {
             className="close-sidebar-menu sidebar-button"
             onClick={handleSidebarMenu}
           >
-            <CiMenuBurger color={colors.backgroundColor} size={25} />
+            <HiMenu  color={colors.backgroundColor} size={25} />
           </button>
         </div>
       </div>
