@@ -78,7 +78,10 @@ const Page = () => {
       style={{ backgroundColor: colors.backgroundColor }}
     >
       {!isSidebarOpen && (
-        <button className="open-sidebar-menu sidebar-button" onClick={handleSidebarMenu}>
+        <button
+          className="open-sidebar-menu sidebar-button"
+          onClick={handleSidebarMenu}
+        >
           <HiMenu color={colors.sidebarBackGroundColor} size={25} />
         </button>
       )}
@@ -105,8 +108,11 @@ const Page = () => {
             className="close-sidebar-menu sidebar-button"
             onClick={handleSidebarMenu}
           >
-            <HiMenu  color={colors.backgroundColor} size={25} />
+            <HiMenu color={colors.backgroundColor} size={25} />
           </button>
+        </div>
+        <div className="footer">
+          <h3 style={{color: colors.backgroundColor}}>Andersen consulting</h3>
         </div>
       </div>
 
