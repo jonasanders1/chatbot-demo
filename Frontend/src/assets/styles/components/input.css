@@ -1,11 +1,11 @@
 .input-form {
   display: flex;
-  justify-content: space-between;
   align-items: flex-end;
   gap: 1rem;
-  border: 2px solid #4a4849;
+  border: 1px solid #4a484932;
   border-radius: 0.3rem;
   padding: 0.5rem;
+  margin: 0.5rem;
 }
 .input-container {
   font-size: 1rem;
@@ -15,11 +15,15 @@
   max-height: 200px;
   resize: none;
   flex: 1;
+  
   color: #4a4849;
+  /* border: 1px solid red; */
+  align-self: center;
 }
 
 .input-button {
   border-radius: 0.5rem;
+  /* border: 1px solid red; */
   border: none;
   height: 40px;
   width: 40px;

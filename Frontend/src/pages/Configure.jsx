@@ -2,20 +2,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../assets/styles/pages/configure.css";
+
 const Page = () => {
   const [companyUrl, setCompanyUrl] = useState("");
   const [companyName, setCompanyName] = useState("");
-  const [companyNameIsFocused, setCompanyNameIsFocused] = useState(false);
-  const [companyURLIsFocused, setCompanyURLIsFocused] = useState(false);
-
-  const handleNameInputFocus = () => {
-    setCompanyNameIsFocused(true);
-    setCompanyURLIsFocused(false);
-  };
-  const handleURLInputFocus = () => {
-    setCompanyURLIsFocused(true);
-    setCompanyNameIsFocused(false);
-  };
 
   const handleCompanyInfo = async (e) => {
     // e.preventDefault();
@@ -41,47 +31,45 @@ const Page = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container configure-container">
+      <div className="text-container">
+        <h1>Demo chatbot</h1>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis dolore
+          corporis animi explicabo nulla, fugit quidem atque assumenda
+          exercitationem pariatur.
+        </p>
+        <br />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis dolore
+          corporis animi explicabo nulla, fugit quidem atque assumenda
+          exercitationem pariatur.
+        </p>
+      </div>
       <form onSubmit={handleCompanyInfo} className="configure-form">
         <div className="field">
-          <label
-            className={`configure-label ${
-              companyURLIsFocused ? "" : "input-focused"
-            } `}
-          >
-            Company URL
-          </label>
+          <label>Company URL</label>
           <input
-            onFocus={handleNameInputFocus}
-            className="configure-input"
             type="text"
             value={companyUrl}
             onChange={(e) => setCompanyUrl(e.target.value)}
           />
         </div>
         <div className="field">
-          <label
-            className={`configure-label ${
-              companyNameIsFocused ? "" : "input-focused"
-            }`}
-          >
-            Company Name
-          </label>
+          <label>Company Name</label>
           <input
-            onFocus={handleURLInputFocus}
-            className="configure-input"
             type="text"
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
           />
         </div>
 
-        <button className="configure-btn" type="submit">
+        {/* <button className="configure-btn" type="submit">
           Configure bot
-        </button>
+        </button> */}
 
         <Link to={"/chat"} className="button-wrapper">
-          <button className="configure-btn">Go to bot</button>
+          <button className="configure-btn">Configure Bot</button>
         </Link>
       </form>
     </div>

@@ -1,11 +1,17 @@
 /* eslint-disable react/prop-types */
-import { ReactTyped } from "react-typed";
 import { useState } from "react";
+// Styles
 import "../assets/styles/components/messageItem.css";
+// Colors
 import { colors } from "../assets/styles/colors";
+// Library for typing animation
+import { ReactTyped } from "react-typed";
+
 const MessageItem = ({ message }) => {
   const [animationComplete, setAnimationComplete] = useState(false);
 
+  // Function for changing the state of the animation
+  // ReactTyped --> onComplete --> handleTypingDone
   const handleTypingDone = () => {
     setAnimationComplete(true);
   };
@@ -26,14 +32,6 @@ const MessageItem = ({ message }) => {
       }
     >
       <div className="message-header">
-        {/* <div
-          className="dot"
-          style={
-            message.sender === "user"
-              ? { backgroundColor: `${colors.userMessageBorder}` }
-              : { backgroundColor: `${colors.botMessageBorder}` }
-          }
-        ></div> */}
         <h3
           className="message-header-text"
           style={
@@ -45,7 +43,6 @@ const MessageItem = ({ message }) => {
           {message.sender === "user" ? "You" : "Bot"}
         </h3>
       </div>
-
       {message.sender === "bot" && !animationComplete ? (
         <ReactTyped
           style={{ color: colors.chatTextColor }}
@@ -57,11 +54,13 @@ const MessageItem = ({ message }) => {
           showCursor={true}
         />
       ) : (
-        <div>
-          <p className="message-text" style={{ color: colors.chatTextColor }}>
-            {message.text}
-          </p>
-        </div>
+        <p
+          className="message-text"
+          style={{ color: colors.chatTextColor }}
+          dangerouslySetInnerHTML={{
+            __html: message.text.replace(/\n/g, "<br>"),
+          }}
+        ></p>
       )}
     </div>
   );

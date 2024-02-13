@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
-body{
-  font-family: 'Poppins', sans-serif;
+body {
+  font-family: "Poppins", sans-serif;
 }
 *,
 *::after,
@@ -17,4 +17,54 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #4a4849;
+}
+
+/* For WebKit-based browsers (Chrome, Safari) */
+/* You can use ::-webkit-scrollbar to target the scrollbar */
+::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+::-webkit-scrollbar-track {
+  background: #cecdc1;
+  border-radius: 5px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #4a4849; /* Color of the scrollbar handle */
+  border-radius: 5px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar handle on hover */
+}
+
+/* For Mozilla-based browsers (Firefox) */
+/* You can use scrollbar for targeting the scrollbar */
+scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+/* Track */
+scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+/* Handle */
+scrollbar-thumb {
+  border-radius: 5px;
+  background: #888; /* Color of the scrollbar handle */
+}
+
+/* Handle on hover */
+scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar handle on hover */
+}
+button {
+  opacity: 0.7;
+  transition: all 200ms;
+}
+button:hover {
+  cursor: pointer;
+  opacity: 1;
 }

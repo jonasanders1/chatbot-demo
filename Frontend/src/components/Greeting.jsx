@@ -1,5 +1,5 @@
 import Logo from '../assets/robot.png'
-import "../App.css";
+import "../assets/styles/components/greeting.css";
 
 const Greeting = () => {
   return (

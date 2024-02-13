@@ -1,0 +1,10 @@
+.loading-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  
+}
+.animation{
+  transform: translateX(-35%);
+  
+}

@@ -1,25 +1,40 @@
 /* eslint-disable react/prop-types */
-import { useRef } from "react";
-import { FaArrowUp } from "react-icons/fa";
+import { useEffect, useRef } from "react";
+// Styles
 import "../assets/styles/components/input.css";
+// Icons
+import { FaArrowUp } from "react-icons/fa";
 
 const Input = ({
   userInput,
   setUserInput,
   isActive,
   setMessages,
-  isLoading,
+  isBotMessageLoading,
   setIsUsersTurn,
   isTextareaDisabled,
+  isUsersTurn,
 }) => {
   const textareaRef = useRef(null);
 
+  // Hook for detecting and focusing the input
+  useEffect(() => {
+    if (isUsersTurn && textareaRef.current) {
+      textareaRef.current.focus();
+    }
+  }, [isUsersTurn]);
+
+  // Function that posts the message from the user
+  // --> Stores the message in an array for displaying purposes
   const handleUserMessage = async (e) => {
     e.preventDefault();
+
     if (!userInput.trim()) {
+      // Do nothing if input is empty
       return;
     }
-    if (isLoading) {
+    if (isBotMessageLoading) {
+      // Do nothing if bot is writing
       return;
     }
     // POST userInput to backend
@@ -37,7 +52,7 @@ const Input = ({
     //   console.error("Error:", error);
     // }
 
-    // Add the user message to the messages state
+    // Add the user message to the messages array
     setMessages((prevMessages) => [
       ...prevMessages,
       { text: userInput, sender: "user" },
@@ -49,7 +64,7 @@ const Input = ({
     adjustTextareaHeight();
   };
 
-  // Function to adjust the hight of the input field
+  // Function to adjust the hight of the input field based on the content
   const adjustTextareaHeight = () => {
     const textarea = textareaRef.current;
     if (textarea) {
@@ -83,7 +98,7 @@ const Input = ({
           adjustTextareaHeight();
           console.log(textareaRef.current.scrollHeight);
         }}
-        disabled={isLoading || isTextareaDisabled}
+        disabled={isBotMessageLoading || isTextareaDisabled}
       />
 
       <button

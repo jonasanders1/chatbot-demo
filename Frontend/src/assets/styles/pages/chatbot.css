@@ -2,49 +2,7 @@
   display: flex;
 }
 
-.sidebar {
-  width: 300px;
-  height: 100vh;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 
-.hidden {
-  display: none;
-}
-
-.close-sidebar-menu {
-}
-.open-sidebar-menu {
-  position: absolute;
-  top: 40px;
-  z-index: 10;
-  left: 40px;
-}
-.sidebar-button {
-  border: none;
-  background-color: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.sidebar-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.footer{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.footer > * {
-  font-weight: 200;
-}
 
 /* ChatBot */
 .chatbot-container {
@@ -53,24 +11,7 @@
   padding: 0.5rem;
   overflow: hidden;
 }
-.go-back-btn {
-  background-color: inherit;
-  border-radius: 0.2rem;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: all 150ms ease;
-}
-.go-back-btn:hover {
-  opacity: 1;
-}
-.go-back-btn-text {
-  font-size: 1.2rem;
-}
+
 
 .chatbot {
   display: flex;
@@ -79,7 +20,7 @@
   height: 100%;
   width: 100%;
   max-width: 100%;
-  padding: 1rem;
+  
   border-radius: 0.3rem;
   box-shadow: inset 1px 1px 5px 1px #4d4d4d69;
   font-family: "Poppins", sans-serif;
@@ -107,6 +48,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding: 1rem;
   overflow: auto;
   scroll-behavior: smooth;
   position: relative;
