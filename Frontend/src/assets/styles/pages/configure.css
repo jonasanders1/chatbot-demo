@@ -1,11 +1,12 @@
 .configure-container {
   gap: 2rem;
+
+  flex-direction: column;
+  padding: 1rem;
 }
 
 .text-container {
-  max-width: 500px;
-  color: #f3f1e4;
-  height: 70%;
+  max-width: 700px;
 }
 .text-container h1 {
   color: #f3f1e4;
@@ -14,27 +15,37 @@
   color: rgba(215, 213, 198, 0.569);
 }
 .configure-form {
-  align-self: flex-end;
-  width: 80%;
-  max-width: 500px;
+  height: 100%;
+  width: 100%;
+  max-width: 700px;
+}
+.configure-form form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 200px;
 }
-label {
-  color: #f3f1e4;
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
 }
-input {
+
+.configure-input {
+  flex: 1;
   border-radius: 0.3rem;
   border: none;
   padding: 0.5rem;
   font-size: 1rem;
 }
+label {
+  color: #f3f1e4;
+}
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.3rem;
+  width: 100%;
   margin-top: auto;
   justify-content: end;
   position: relative;
@@ -43,18 +54,18 @@ input {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 .button-container {
   display: flex;
   gap: 1rem;
+  margin-bottom: 30px;
 }
 .theme-btn {
   border: 3px solid rgb(103, 103, 103);
   flex: 1;
   height: 50px;
   border-radius: 0.5rem;
-  scale: 0.95;
+  scale: 0.98;
 }
 .theme-btn-light {
   background: linear-gradient(-45deg, #4a4849 50%, #f3f1e4 50%);
@@ -76,7 +87,7 @@ input {
   border-radius: 0.2rem;
 }
 .active {
-  border: 3px solid #f3f1e4;
+  border: 3px solid #5bd336;
   scale: 1;
 }
 
@@ -94,11 +105,24 @@ input {
 
 .configure-btn {
   background-color: #f3f1e4;
-  border-radius: 0.3rem;
+  border-radius: 2rem;
   color: rgb(111, 111, 111);
   border: none;
-  margin-top: 30px;
   width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
+  padding: 0.75rem 0rem;
+  font-size: 1.25rem;
+}
+
+@media screen and (min-width: 600px) {
+  .configure-container {
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 200px;
+  }
+  .configure-form {
+    height: fit-content;
+  }
+  .input-container {
+    flex-direction: row;
+  }
 }

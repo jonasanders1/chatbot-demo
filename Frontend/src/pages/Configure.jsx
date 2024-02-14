@@ -52,53 +52,59 @@ const Page = () => {
           exercitationem pariatur.
         </p>
       </div>
-      <form onSubmit={handleCompanyInfo} className="configure-form">
-        <div className="field">
-          <label>Company URL</label>
-          <input
-            type="text"
-            value={companyUrl}
-            onChange={(e) => setCompanyUrl(e.target.value)}
-          />
-        </div>
-        <div className="field">
-          <label>Company Name</label>
-          <input
-            type="text"
-            value={companyName}
-            onChange={(e) => setCompanyName(e.target.value)}
-          />
-        </div>
-        <div className="theme-field">
-          <label>Theme</label>
-          <div className="button-container">
-            <button
-              className={`theme-btn theme-btn-light ${
-                selectedTheme === "light" ? "active" : ""
-              }`}
-              onClick={(e) => handleThemeSelect(e, "light")}
-            >
-              <span className="theme-txt theme-txt-light">Light theme</span>
-            </button>
-            <button
-              className={`theme-btn theme-btn-dark ${
-                selectedTheme === "dark" ? "active" : ""
-              }`}
-              onClick={(e) => handleThemeSelect(e, "dark")}
-            >
-              <span className="theme-txt theme-txt-dark">Dark theme</span>
-            </button>
+      <div className="configure-form">
+        <form onSubmit={handleCompanyInfo}>
+          <div className="input-container">
+            <div className="field">
+              <label>Company URL</label>
+              <input
+                className="configure-input"
+                type="text"
+                value={companyUrl}
+                onChange={(e) => setCompanyUrl(e.target.value)}
+              />
+            </div>
+            <div className="field">
+              <label>Company Name</label>
+              <input
+                className="configure-input"
+                type="text"
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+              />
+            </div>
           </div>
-        </div>
+          <div className=" field theme-field">
+            <label>Theme</label>
+            <div className="button-container">
+              <button
+                className={`theme-btn theme-btn-light ${
+                  selectedTheme === "light" ? "active" : ""
+                }`}
+                onClick={(e) => handleThemeSelect(e, "light")}
+              >
+                <span className="theme-txt theme-txt-light">Light theme</span>
+              </button>
+              <button
+                className={`theme-btn theme-btn-dark ${
+                  selectedTheme === "dark" ? "active" : ""
+                }`}
+                onClick={(e) => handleThemeSelect(e, "dark")}
+              >
+                <span className="theme-txt theme-txt-dark">Dark theme</span>
+              </button>
+            </div>
+          </div>
 
-        {/* <button className="configure-btn" type="submit">
+          {/* <button className="configure-btn" type="submit">
           Configure bot
         </button> */}
 
-        <Link to={"/chat"} className="button-wrapper">
-          <button className="configure-btn">Configure Bot</button>
-        </Link>
-      </form>
+          <Link to={"/chat"} className="button-wrapper">
+            <button className="configure-btn">Configure Bot</button>
+          </Link>
+        </form>
+      </div>
     </div>
   );
 };
