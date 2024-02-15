@@ -68,10 +68,7 @@ const Page = () => {
   };
 
   return (
-    <div
-      className="container"
-      style={{ backgroundColor: colors.backgroundColor }}
-    >
+    <div className="container">
       <Sidebar />
       <div className="chatbot-container">
         <div className="chatbot">

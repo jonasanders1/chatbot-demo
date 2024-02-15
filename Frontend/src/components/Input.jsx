@@ -102,6 +102,7 @@ const Input = ({
       />
 
       <button
+        disabled={!isUsersTurn}
         type="submit"
         className={isActive ? "active input-button" : "disabled input-button"}
       >

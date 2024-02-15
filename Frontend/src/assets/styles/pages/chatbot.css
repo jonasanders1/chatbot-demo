@@ -1,17 +1,17 @@
-.container {
-  display: flex;
+.container{
+  background-color: var(--background-color);
 }
-
-
-
-/* ChatBot */
 .chatbot-container {
   flex: 1;
   height: 100vh;
+  width: 100vw;
   padding: 0.5rem;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
 }
-
 
 .chatbot {
   display: flex;
@@ -20,30 +20,16 @@
   height: 100%;
   width: 100%;
   max-width: 100%;
-  
   border-radius: 0.3rem;
-  box-shadow: inset 1px 1px 5px 1px #4d4d4d69;
+  box-shadow: inset 1px 1px 5px 1px #323131d4;
   font-family: "Poppins", sans-serif;
   position: relative;
   overflow: hidden;
+  background-color: var(--chat-bg-color);
 }
 
-/* .chatbot::after {
-  content: "";
-  position: absolute;
-  width: calc(100% - 2rem);
-  height: 20px;
-  top: 16px;
-  left: 1rem;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 1),
-    rgb(255, 255, 255, 0)
-    );
-  } */
 
 .message-screen {
-  /* border: 1px solid red; */
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -53,9 +39,9 @@
   scroll-behavior: smooth;
   position: relative;
 }
-
 .scroll-down-button {
   position: fixed;
   bottom: 10%;
   left: 50%;
 }
+

@@ -1,52 +1,58 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../assets/styles/pages/configure.css";
+import { ThemeContext } from "../main";
 
 const Page = () => {
+  const [isFormValid, setIsFormValid] = useState(false);
+
   const [companyUrl, setCompanyUrl] = useState("");
   const [companyName, setCompanyName] = useState("");
-  const [selectedTheme, setSelectedTheme] = useState("light");
 
-  const handleThemeSelect = (e, theme) => {
-    e.preventDefault();
-    setSelectedTheme(theme);
-  };
+  const urlPattern = /^(https?:\/\/)?([\w\d-]+\.)+[\w\d]{2,}(\/.*)?$/i;
+  useEffect(() => {
+    const isUrlValid = urlPattern.test(companyUrl); // does the companyURL fulfill the claims
+    const isCompanyNameValid = !!companyName; // companyName is not empty
+
+    setIsFormValid(isUrlValid && isCompanyNameValid);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [companyName, companyUrl]);
 
   const handleCompanyInfo = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
-    // const companyInfo = {
-    //   company_url: companyUrl,
-    //   company_name: companyName,
-    // };
+    const companyInfo = {
+      company_url: companyUrl,
+      company_name: companyName,
+    };
 
-    // try {
-    //   await fetch("http://localhost:5000/input", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({ companyInfo }),
-    //   });
-    //   console.log(JSON.stringify({ companyInfo }));
-    // } catch (error) {
-    //   console.error("Error:", error);
-    // }
+    try {
+      await fetch("http://localhost:5000/input", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ companyInfo }),
+      });
+      console.log(JSON.stringify({ companyInfo }));
+    } catch (error) {
+      console.error("Error:", error);
+    }
     console.log("Bot Configured");
   };
 
   return (
     <div className="container configure-container">
       <div className="text-container">
-        <h1>Demo chatbot</h1>
-        <p>
+        <h1 className="title">Demo chatbot</h1>
+        <p className="text">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis dolore
           corporis animi explicabo nulla, fugit quidem atque assumenda
           exercitationem pariatur.
         </p>
         <br />
-        <p>
+        <p className="text">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis dolore
           corporis animi explicabo nulla, fugit quidem atque assumenda
           exercitationem pariatur.
@@ -74,34 +80,14 @@ const Page = () => {
               />
             </div>
           </div>
-          <div className=" field theme-field">
-            <label>Theme</label>
-            <div className="button-container">
-              <button
-                className={`theme-btn theme-btn-light ${
-                  selectedTheme === "light" ? "active" : ""
-                }`}
-                onClick={(e) => handleThemeSelect(e, "light")}
-              >
-                <span className="theme-txt theme-txt-light">Light theme</span>
-              </button>
-              <button
-                className={`theme-btn theme-btn-dark ${
-                  selectedTheme === "dark" ? "active" : ""
-                }`}
-                onClick={(e) => handleThemeSelect(e, "dark")}
-              >
-                <span className="theme-txt theme-txt-dark">Dark theme</span>
-              </button>
-            </div>
-          </div>
-
-          {/* <button className="configure-btn" type="submit">
-          Configure bot
-        </button> */}
-
           <Link to={"/chat"} className="button-wrapper">
-            <button className="configure-btn">Configure Bot</button>
+            <button
+              className={`configure-btn ${isFormValid ? "valid" : "invalid"}`}
+              type="submit"
+              disabled={!isFormValid}
+            >
+              Configure bot
+            </button>
           </Link>
         </form>
       </div>

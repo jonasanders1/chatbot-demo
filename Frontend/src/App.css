@@ -1,0 +1,41 @@
+/* For WebKit-based browsers (Chrome, Safari) */
+/* You can use ::-webkit-scrollbar to target the scrollbar */
+::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar handle */
+  border-radius: 5px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar handle on hover */
+}
+
+/* For Mozilla-based browsers (Firefox) */
+/* You can use scrollbar for targeting the scrollbar */
+scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+/* Track */
+scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+/* Handle */
+scrollbar-thumb {
+  border-radius: 5px;
+  background: #888; /* Color of the scrollbar handle */
+}
+
+/* Handle on hover */
+scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar handle on hover */
+}
+
